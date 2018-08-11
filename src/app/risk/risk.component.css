@@ -1,0 +1,19 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-cell {
+  align-items: center;
+}
+
+
+
+.mat-row:hover {
+  background-color: #E0E0E0;
+}
