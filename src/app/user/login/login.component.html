@@ -1,0 +1,22 @@
+<form name="form-signin" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+  <div class="imgcontainer">
+    <img src="assets/img/avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" id="username" name="uname" [(ngModel)]="user.usernameOrEmail" #username="ngModel" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" id="password" name="psw" [(ngModel)]="user.password" #password="ngModel" required>
+
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container register">
+    <p>Not Registered? <a [routerLink]="['/register']" class="btn btn-link">Register</a><p>
+  </div>
+ </form>

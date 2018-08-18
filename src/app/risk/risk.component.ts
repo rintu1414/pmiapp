@@ -19,7 +19,6 @@ export class RiskComponent implements OnInit {
   ngOnInit() {
     this.uploadService.uploadFile$.subscribe(
       (file: File) => {
-        const header: String[] = [];
         console.log('file');
         console.log(file);
         if (!!file && !!file[0]) {
