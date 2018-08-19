@@ -2,15 +2,15 @@
   <div class="imgcontainer">
     <img src="assets/img/avatar2.png" alt="Avatar" class="avatar">
   </div>
-
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
   <div class="container">
     <label for="username"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" id="username" name="uname" [(ngModel)]="user.usernameOrEmail" #username="ngModel" required>
-
+    <input type="text" placeholder="Enter Username" id="username" name="uname" [(ngModel)]="user.usernameOrEmail" #username="ngModel"  required>
+    <div *ngIf="f.submitted && !username.valid" class="help-block">an valid username or email is required</div>
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" id="password" name="psw" [(ngModel)]="user.password" #password="ngModel" required>
-
-    <button type="submit">Login</button>
+    <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+    <button [disabled]="loading" type="submit">Login</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>

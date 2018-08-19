@@ -2,12 +2,16 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { map, filter, catchError, mergeMap} from 'rxjs/operators';
 import {User} from '../model/model.user';
+import {BehaviorSubject} from '../../../node_modules/rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
   private authUrl = '/api/auth/signin';
+  private registerUrl = '/api/auth/signup';
+  private regUser = new BehaviorSubject<any>(User);
+  public regUser$ = this.regUser.asObservable();
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) {
@@ -31,7 +35,12 @@ export class AuthServiceService {
       }));
 
   }
-
+  registerUser(user: User) {
+    return this.http.post(this.registerUrl,
+      JSON.stringify({name: user.name, username: user.usernameOrEmail, email: user.email, password: user.password, roles: user.roles}),
+      {headers: this.headers}).subscribe(data =>
+      console.log(data));
+  }
   getToken(): String {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const token = currentUser && currentUser.token;

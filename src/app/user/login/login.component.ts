@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   user: User = new User();
   errorMessage: string;
+  loading = false;
   constructor(private authService: AuthServiceService, private router: Router) {}
 
   ngOnInit() {
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/profile']);
         }, err => {
           this.errorMessage = 'error :  Username or password is incorrect';
+        this.loading = false;
         }
       );
   }

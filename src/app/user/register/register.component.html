@@ -1,24 +1,24 @@
-<form>
+<form (ngSubmit)="f.form.valid && register(f.value)" #f="ngForm" novalidate>
 <div class="container">
   <strong>Register</strong>
-
+  <div *ngIf="userCreatedMsg">userCreatedMsg</div>
   <hr>
-  <label><b>Full Name</b></label>
-  <input type="text" placeholder="Enter Full Name" name="name" required>
+  <label for="fullName"><b>Full Name</b></label>
+  <input type="text" id="fullName" placeholder="Enter Full Name" name="name" [(ngModel)]="user.name" #fullName="ngModel"  required>
+  <div *ngIf="f.submitted && !fullName.valid" class="help-block">The full Name is required</div>
+  <label for="userName"><b>User Id</b></label>
+  <input type="text" id="userName" placeholder="Enter User Id" name="usernameOrEmail" [(ngModel)]="user.usernameOrEmail" #userName="ngModel" required>
+  <div *ngIf="f.submitted && !userName.valid" class="help-block">A UserId is required</div>
+  <label for="email"><b>Email</b></label>
+  <input type="text" placeholder="Enter Email" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" required>
 
-  <label><b>Email</b></label>
-  <input type="text" placeholder="Enter Email" name="email" required>
-
-  <label><b>Password</b></label>
-  <input type="password" placeholder="Enter Password" name="psw" required>
-
-  <label><b>Repeat Password</b></label>
-  <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+  <label for="pwd"><b>Password</b></label>
+  <input type="password" id="pwd" placeholder="Enter Password" name="password" [(ngModel)]="user.password" #pwd="ngModel" required>
 
   <div class="form-group">
     <label for="sel1"><b>Roles:</b>&nbsp;&nbsp;</label>
-    <select class="form-control" id="sel1">
-      <option *ngFor="let role of allRoles" [ngValue]="role">
+    <select class="form-control" id="sel1" [(ngModel)]="user.roles"  name="roles"  #sel1="ngModel">
+      <option *ngFor="let role of allRoles" [ngValue]="role.roleId">
         {{ role.roleType }}
       </option>
     </select>
