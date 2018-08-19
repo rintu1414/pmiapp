@@ -38,8 +38,7 @@ export class AuthServiceService {
   registerUser(user: User) {
     return this.http.post(this.registerUrl,
       JSON.stringify({name: user.name, username: user.usernameOrEmail, email: user.email, password: user.password, roles: user.roles}),
-      {headers: this.headers}).subscribe(data =>
-      console.log(data));
+      {headers: this.headers});
   }
   getToken(): String {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
