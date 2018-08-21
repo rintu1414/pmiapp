@@ -1,4 +1,4 @@
-<form (ngSubmit)="f.form.valid && register(f.value)" #f="ngForm" novalidate>
+<form (ngSubmit)="f.form.valid && register(f.form)" #f="ngForm" novalidate>
 <div class="container">
   <strong>Register</strong>
   <div *ngIf="successMsg">{{successMsg.message}}</div>
@@ -7,8 +7,15 @@
   <input type="text" id="fullName" placeholder="Enter Full Name" name="name" [(ngModel)]="user.name" #fullName="ngModel"  required>
   <div *ngIf="f.submitted && !fullName.valid" class="help-block">The full Name is required</div>
   <label for="userName"><b>User Id</b></label>
-  <input type="text" id="userName" placeholder="Enter User Id" name="usernameOrEmail" [(ngModel)]="user.usernameOrEmail" #userName="ngModel" required>
-  <div *ngIf="f.submitted && !userName.valid" class="help-block">A UserId is required</div>
+  <input type="text" id="userName" placeholder="Enter User Id" name="usernameOrEmail" required app-usernameExists [(ngModel)]="user.usernameOrEmail" #userName="ngModel">
+  <div *ngIf="userName.dirty && userName.errors" class = "error">
+    <div *ngIf="userName.errors['required']">
+      Username required.
+    </div>
+    <div *ngIf="userName.errors['app-usernameExists']">
+      Username already exists.
+    </div>
+  </div>
   <label for="email"><b>Email</b></label>
   <input type="text" placeholder="Enter Email" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" required>
 

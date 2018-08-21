@@ -27,6 +27,7 @@ import {routing} from './app.routing';
 import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {JwtInterceptor} from './urlPermission/JwtInterceptor';
 import {ErrorInterceptor} from './urlPermission/ErrorInterceptor';
+import {ExistingUsernameValidatorDirective} from './custom-validators/existingUsernameValidator';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {ErrorInterceptor} from './urlPermission/ErrorInterceptor';
     UploadComponent,
     LoginComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    ExistingUsernameValidatorDirective
   ],
   imports: [
     BrowserModule,
