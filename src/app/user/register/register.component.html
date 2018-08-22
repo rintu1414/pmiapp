@@ -11,10 +11,10 @@
     </div>
   </div>
   <label for="userName"><b>User Id</b></label>
-  <input type="text" id="userName" placeholder="Enter User Id" name="usernameOrEmail" required app-usernameExists [(ngModel)]="user.usernameOrEmail" #userName="ngModel">
+  <input type="text" id="userName" placeholder="Enter User Id" name="usernameOrEmail" required app-usernameExists [(ngModel)]="user.usernameOrEmail" #userName="ngModel" minlength="5" maxlength="8">
   <div *ngIf="userName.dirty && userName.errors" class = "error">
     <div *ngIf="userName.errors['required']">
-      Username required.
+      is required (minimum 5 characters).
     </div>
     <div *ngIf="userName.errors['app-usernameExists']">
       Username already exists.
@@ -30,7 +30,7 @@
       Email required.
     </div>
     <div *ngIf="email.errors['email']">
-      Email not valid.
+      Email not valid,should be <i>john@doe.com</i>.
     </div>
     <div *ngIf="email.errors['app-emailExists']">
       Email already exists.

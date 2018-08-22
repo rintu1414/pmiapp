@@ -29,6 +29,7 @@ import {JwtInterceptor} from './urlPermission/JwtInterceptor';
 import {ErrorInterceptor} from './urlPermission/ErrorInterceptor';
 import {ExistingUsernameValidatorDirective} from './custom-validators/existingUsernameValidator';
 import {ExistingEmailValidatorDirective} from './custom-validators/existing-email-validator';
+import {EqualValidator} from './custom-validators/equal-validator';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {ExistingEmailValidatorDirective} from './custom-validators/existing-emai
     RegisterComponent,
     HeaderComponent,
     ExistingUsernameValidatorDirective,
-    ExistingEmailValidatorDirective
+    ExistingEmailValidatorDirective,
+    EqualValidator
   ],
   imports: [
     BrowserModule,
