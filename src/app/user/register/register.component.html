@@ -37,8 +37,12 @@
     </div>
   </div>
   <label for="pwd"><b>Password</b></label>
-  <input type="password" id="pwd" placeholder="Enter Password" name="password" [(ngModel)]="user.password" #pwd="ngModel" required>
-
+  <input type="password" id="pwd" placeholder="Enter Password" name="password" [(ngModel)]="user.password" #pwd="ngModel" required minlength="6">
+  <div *ngIf="pwd.dirty && pwd.errors" class = "error">
+    <div *ngIf="pwd.errors['required']">
+      Password is too short (Minimum 6 characters needed)
+    </div>
+  </div>
   <div class="form-group">
     <label for="sel1"><b>Roles:</b>&nbsp;&nbsp;</label>
     <select class="form-control" id="sel1" [(ngModel)]="user.roles"  name="roles"  #sel1="ngModel">
