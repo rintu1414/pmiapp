@@ -1,11 +1,15 @@
 <form (ngSubmit)="f.form.valid && register(f.form)" #f="ngForm" novalidate>
 <div class="container">
-  <strong>Register</strong>
+  <strong>User Registration</strong>
   <div *ngIf="successMsg">{{successMsg.message}}</div>
   <hr>
   <label for="fullName"><b>Full Name</b></label>
   <input type="text" id="fullName" placeholder="Enter Full Name" name="name" [(ngModel)]="user.name" #fullName="ngModel"  required>
-  <div *ngIf="f.submitted && !fullName.valid" class="help-block">The full Name is required</div>
+  <div *ngIf="fullName.dirty && fullName.errors" class = "error">
+    <div *ngIf="fullName.errors['required']">
+      Full Name is required
+    </div>
+  </div>
   <label for="userName"><b>User Id</b></label>
   <input type="text" id="userName" placeholder="Enter User Id" name="usernameOrEmail" required app-usernameExists [(ngModel)]="user.usernameOrEmail" #userName="ngModel">
   <div *ngIf="userName.dirty && userName.errors" class = "error">
@@ -15,10 +19,23 @@
     <div *ngIf="userName.errors['app-usernameExists']">
       Username already exists.
     </div>
+    <div *ngIf="userName.pending">
+      Hold tight... Checking availability of {{ userName.value }}
+    </div>
   </div>
   <label for="email"><b>Email</b></label>
-  <input type="text" placeholder="Enter Email" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" required>
-
+  <input type="text" placeholder="Enter Email" id="email" name="email" [(ngModel)]="user.email" #email="ngModel" required email app-emailExists>
+  <div *ngIf="email.dirty && email.errors" class = "error">
+    <div *ngIf="email.errors['required']">
+      Email required.
+    </div>
+    <div *ngIf="email.errors['email']">
+      Email not valid.
+    </div>
+    <div *ngIf="email.errors['app-emailExists']">
+      Email already exists.
+    </div>
+  </div>
   <label for="pwd"><b>Password</b></label>
   <input type="password" id="pwd" placeholder="Enter Password" name="password" [(ngModel)]="user.password" #pwd="ngModel" required>
 

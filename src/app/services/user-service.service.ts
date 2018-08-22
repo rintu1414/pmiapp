@@ -7,7 +7,7 @@ import {UserIdentityAvailability} from '../model/model.useravailability';
 })
 export class UserServiceService {
   private userNameUrl = '/api/user/checkUsernameAvailability';
-  private emailAvailUrl = '/api//user/checkEmailAvailability';
+  private emailAvailUrl = '/api/user/checkEmailAvailability';
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class UserServiceService {
 
   getUserByEmail(userEmail: string): Observable<UserIdentityAvailability> {
     userEmail = userEmail.trim();
-    return this.http.get<UserIdentityAvailability>(this.userNameUrl + '?email=' + userEmail);
+    return this.http.get<UserIdentityAvailability>(this.emailAvailUrl + '?email=' + userEmail);
   }
 
 }

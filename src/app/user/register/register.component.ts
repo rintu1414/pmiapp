@@ -31,6 +31,6 @@ export class RegisterComponent implements OnInit {
       // the third argument is a function which runs on completion
       () => console.log('done creating user')
     );
-    form.resetForm();
+    form.reset();
   }
 }

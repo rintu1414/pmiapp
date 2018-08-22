@@ -28,6 +28,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {JwtInterceptor} from './urlPermission/JwtInterceptor';
 import {ErrorInterceptor} from './urlPermission/ErrorInterceptor';
 import {ExistingUsernameValidatorDirective} from './custom-validators/existingUsernameValidator';
+import {ExistingEmailValidatorDirective} from './custom-validators/existing-email-validator';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {ExistingUsernameValidatorDirective} from './custom-validators/existingUs
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    ExistingUsernameValidatorDirective
+    ExistingUsernameValidatorDirective,
+    ExistingEmailValidatorDirective
   ],
   imports: [
     BrowserModule,
