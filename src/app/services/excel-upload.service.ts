@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import * as XLSX from 'xlsx';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
+import {PostRecordsService} from './post-records.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,6 +9,7 @@ export class ExcelUploadService {
   arrayBuffer: any;
   fileReader: FileReader = new FileReader();
   fileData;
+  postRecordService;
 
 
   dataArr: any =
@@ -32,7 +34,8 @@ export class ExcelUploadService {
       }
     ];
 
-  constructor() {
+  constructor(postRecordService: PostRecordsService) {
+    this.postRecordService = postRecordService;
     this.fileReader.onload = (e) => {
       this.arrayBuffer = this.fileReader.result;
 
@@ -52,11 +55,15 @@ export class ExcelUploadService {
     };
 
   }
-  private uploadFile = new BehaviorSubject<any>(this.dataArr);
+  private uploadFile = new Subject<any>();
   public uploadFile$ = this.uploadFile.asObservable();
 
   uploadExcel(file: File) {
-    this.fileReader.readAsArrayBuffer(file);
+    this.fileReader.readAsArrayBuffer(file)
+    this.uploadFile.subscribe((uploadData) => {
+      this.postRecordService.postData(uploadData).subscribe((data) => {console.log(data)})
+    })
+   ;
   }
 }
 
