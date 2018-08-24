@@ -8,16 +8,26 @@ import {ExcelUploadService} from '../services/excel-upload.service';
 })
 export class UploadComponent implements OnInit {
   file: File;
+  dataArr;
+  headerArr;
   constructor(public uploadService: ExcelUploadService) { }
 
   ngOnInit() {
+    this.uploadService.uploadFile$.subscribe(
+      (file: File) => {
+        const header: String[] = [];
+        console.log('file');
+        console.log(file);
+        if (!!file && !!file[0]) {
+          this.headerArr = Object.keys(file[0]);
+        }
+        this.dataArr = file;
+      }
+    );
   }
 
   incomingfile(event) {
-    console.log(event);
     this.file = event.target.files[0];
-  }
-  uploadExcel() {
     this.uploadService.uploadExcel(this.file);
   }
 

@@ -30,7 +30,11 @@ import {ErrorInterceptor} from './urlPermission/ErrorInterceptor';
 import {ExistingUsernameValidatorDirective} from './custom-validators/existingUsernameValidator';
 import {ExistingEmailValidatorDirective} from './custom-validators/existing-email-validator';
 import {EqualValidator} from './custom-validators/equal-validator';
+import { JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -46,6 +50,13 @@ import {EqualValidator} from './custom-validators/equal-validator';
   ],
   imports: [
     BrowserModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:5000'],
+        blacklistedRoutes: ['localhost:3001/auth/']
+      }
+    }),
     DataTableModule,
     MatDividerModule,
     MatTableModule,
