@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject} from '../../../node_modules/rxjs';
+import {Injectable} from '@angular/core';
 import * as XLSX from 'xlsx';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,6 +8,7 @@ export class ExcelUploadService {
   arrayBuffer: any;
   fileReader: FileReader = new FileReader();
   fileData;
+
 
   dataArr: any =
     [
@@ -58,3 +59,4 @@ export class ExcelUploadService {
     this.fileReader.readAsArrayBuffer(file);
   }
 }
+

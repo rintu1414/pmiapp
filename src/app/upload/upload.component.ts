@@ -14,6 +14,11 @@ export class UploadComponent implements OnInit {
   constructor(public uploadService: ExcelUploadService, public getRecordsService: GetRecordsService) { }
 
   ngOnInit() {
+
+    this.getData();
+  }
+
+  incomingfile(event) {
     this.uploadService.uploadFile$.subscribe(
       (file: File) => {
         const header: String[] = [];
@@ -25,15 +30,15 @@ export class UploadComponent implements OnInit {
         this.dataArr = file;
       }
     );
-  }
-
-  incomingfile(event) {
     this.file = event.target.files[0];
     this.uploadService.uploadExcel(this.file);
   }
 
   getData() {
-    this.getRecordsService.getData();
+    this.getRecordsService.getData().subscribe((data) => {
+      this.headerArr = Object.keys(data[0]);
+      this.dataArr = data;
+    });
   }
 
 }
