@@ -1,5 +1,5 @@
 <input type="file" style="display: inline-block;width: 63%;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
-
+<button (click)="getData()">hit</button>
 <div class="container">
   <div class="table-responsive-sm table-hover table-sm">
     <table class="table" *ngIf="dataArr" [mfData]="dataArr" #mf="mfDataTable" [mfRowsOnPage]="5">
