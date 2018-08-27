@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { map, filter, catchError, mergeMap} from 'rxjs/operators';
 import {User} from '../model/model.user';
 import {BehaviorSubject} from '../../../node_modules/rxjs';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class AuthServiceService {
   public regUser$ = this.regUser.asObservable();
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
+
   constructor(private http: HttpClient) {
   }
 
@@ -24,8 +26,12 @@ export class AuthServiceService {
         // login successful if there's a jwt token in the response
        const token = data && data.accessToken;
         if (token) {
+          const helper = new JwtHelperService();
+         const decodeToken = helper.decodeToken(token);
+         console.log(decodeToken);
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({ usernameOrEmail: user.usernameOrEmail, token: token }));
+          localStorage.setItem('currentUser', JSON.stringify({name: user.usernameOrEmail,
+            usernameOrEmail: decodeToken.sub, roles: decodeToken.scopes, token: token }));
           // return true to indicate successful login
           return true;
         } else {

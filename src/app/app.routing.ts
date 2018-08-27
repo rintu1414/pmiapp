@@ -4,6 +4,7 @@ import {UrlPermission} from './urlPermission/UrlPermission';
 import {LoginComponent} from './user/login/login.component';
 import {RegisterComponent} from './user/register/register.component';
 import {UploadComponent} from './upload/upload.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 
 const appRoutes: Routes = [
@@ -11,7 +12,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'upload', component: UploadComponent },
-
+  { path: 'dashboard', component: DashboardComponent },
   // otherwise redirect to profile
   { path: '**', redirectTo: '/login' }
 ];

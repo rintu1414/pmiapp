@@ -31,6 +31,8 @@ import {ExistingUsernameValidatorDirective} from './custom-validators/existingUs
 import {ExistingEmailValidatorDirective} from './custom-validators/existing-email-validator';
 import {EqualValidator} from './custom-validators/equal-validator';
 import { JwtModule } from '@auth0/angular-jwt';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -46,7 +48,8 @@ export function tokenGetter() {
     HeaderComponent,
     ExistingUsernameValidatorDirective,
     ExistingEmailValidatorDirective,
-    EqualValidator
+    EqualValidator,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ export function tokenGetter() {
     FormsModule,
     MatToolbarModule,
     routing,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
   ],
   providers: [UrlPermission,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

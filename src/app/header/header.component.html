@@ -12,14 +12,19 @@
       [ngClass]="{ 'show': navbarOpen }">
       <ul class="nav navbar-nav">
         <li class="active"><a style="cursor: pointer">Home</a></li>
-        <li><a style="cursor: pointer">Page 1</a></li>
-        <li><a style="cursor: pointer">Page 2</a></li>
-        <li><a style="cursor: pointer">Page 3</a></li>
+        <li><a style="cursor: pointer">My To Do</a></li>
+        <li><a style="cursor: pointer">Settings</a></li>
+        <li><a style="cursor: pointer">Resources</a></li>
+        <li><a style="cursor: pointer">About Us</a></li>
+        <li><a style="cursor: pointer">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a style="cursor: pointer"><span class="glyphicon glyphicon-user"></span> {{currentUser.usernameOrEmail}}</a></li>
+        <li><a style="cursor: pointer"><span class="glyphicon glyphicon-user"></span> {{currentUser.name}}</a></li>
         <li><a href="#" (click)="logOut()"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a></li>
       </ul>
     </div>
   </div>
 </nav>
+<label style="padding-left: 50%">{{ currentUser.usernameOrEmail }}</label>
+<label style="padding-left: 50%">Role: {{ currentUser.roles }}</label>
+<app-dashboard></app-dashboard>

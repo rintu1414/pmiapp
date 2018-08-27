@@ -11,8 +11,8 @@ export class PostRecordsService {
   constructor(private http: HttpClient) {
   }
 
-  postData(data:any) {
-    console.log("$$$$$$$POST$$$$$$$$$$");
+  postData(data: any) {
+    console.log('$$$$$$$POST$$$$$$$$$$');
     console.log(data);
     return this.http.post('/api/pmi/addRisk', data);
   }
