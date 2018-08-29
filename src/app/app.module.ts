@@ -13,7 +13,7 @@ import {
   MatMenuModule,
   MatIconModule,
   MatButtonModule,
-  MatToolbarModule
+  MatToolbarModule, MatCheckboxModule, MatSidenavModule, MatExpansionModule, MatListModule
 } from '@angular/material';
 import { UploadComponent } from './upload/upload.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -76,7 +76,16 @@ export function tokenGetter() {
     MatToolbarModule,
     routing,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatSidenavModule,
+    FlexLayoutModule,
+    MatExpansionModule,
+    MatListModule
   ],
   providers: [UrlPermission,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

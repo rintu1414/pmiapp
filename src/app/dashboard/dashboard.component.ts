@@ -15,7 +15,7 @@ export class DashboardComponent implements AfterContentInit {
     lg: 6,
     md: 4,
     sm: 4,
-    xs: 3
+    xs: 2
   };
 
   constructor(private observableMedia: ObservableMedia) {}

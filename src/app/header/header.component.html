@@ -1,30 +1,33 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" (click)="toggleNavbar()">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" style="cursor: pointer">PMI Tool</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar"
-      [ngClass]="{ 'show': navbarOpen }">
-      <ul class="nav navbar-nav">
-        <li class="active"><a style="cursor: pointer">Home</a></li>
-        <li><a style="cursor: pointer">My To Do</a></li>
-        <li><a style="cursor: pointer">Settings</a></li>
-        <li><a style="cursor: pointer">Resources</a></li>
-        <li><a style="cursor: pointer">About Us</a></li>
-        <li><a style="cursor: pointer">Contact</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a style="cursor: pointer"><span class="glyphicon glyphicon-user"></span> {{currentUser.name}}</a></li>
-        <li><a href="#" (click)="logOut()"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<label style="padding-left: 50%">{{ currentUser.usernameOrEmail }}</label>
-<label style="padding-left: 50%">Role: {{ currentUser.roles }}</label>
-<app-dashboard></app-dashboard>
+
+  <mat-toolbar color="primary" class="pmi-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="pmi-app-name">PMI</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="pmi-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <div>
+          <img src="assets/img/abstract_smooth_wave_background_vector_grapihic_art_569579.jpg"
+               alt="Avatar" class="img-responsive">
+        </div>
+        <a mat-list-item class="active" style="cursor: pointer">Home</a>
+        <a mat-list-item style="cursor: pointer">My To Do</a>
+        <a mat-list-item style="cursor: pointer">Settings</a>
+        <a mat-list-item style="cursor: pointer">Resources</a>
+        <a mat-list-item style="cursor: pointer">About Us</a>
+        <a mat-list-item style="cursor: pointer">Contact</a>
+      </mat-nav-list>
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <a mat-list-item style="cursor: pointer"><span class="glyphicon glyphicon-user"></span> {{currentUser.name}}</a>
+        <a mat-list-item href="#" (click)="logOut()"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <app-dashboard></app-dashboard>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

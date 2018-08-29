@@ -2,3 +2,11 @@ mat-card{
   width: 99%;
   height: 70%
 }
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.mat-grid-tile {
+  display: inline-block;
+}
