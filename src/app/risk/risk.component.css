@@ -6,14 +6,14 @@ table {
 
 th.mat-sort-header-sorted {
   color: black;
-}
+  }
 
 .mat-cell {
   align-items: center;
   white-space: nowrap;
 }
 
-.mat-header-cell {
+th.mat-header-cell {
   align-items: center;
   white-space: nowrap;
   padding: 9px;
