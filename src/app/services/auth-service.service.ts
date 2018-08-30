@@ -30,8 +30,7 @@ export class AuthServiceService {
          const decodeToken = helper.decodeToken(token);
          console.log(decodeToken);
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({name: user.usernameOrEmail,
-            usernameOrEmail: decodeToken.sub, roles: decodeToken.scopes, token: token }));
+          localStorage.setItem('currentUser', JSON.stringify({name: user.usernameOrEmail, roles: decodeToken.scopes, token: token }));
           // return true to indicate successful login
           return true;
         } else {

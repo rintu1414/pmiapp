@@ -1,10 +1,97 @@
-<div class="container">
-  <div class="table-responsive-sm table-hover table-sm">
+
+  <div class="table-responsive-sm table-hover">
   <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z23">
-    <ng-container *ngFor="let disCol of headerArr; let colIndex = index" matColumnDef="{{disCol}}">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{disCol}}</th>
-      <td mat-cell *matCellDef="let element"> {{element[disCol]}}
-      </td>
+    <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Risk Id</th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+    <ng-container matColumnDef="sourceReference">
+      <th mat-header-cell *matHeaderCellDef>Source Reference</th>
+      <td mat-cell *matCellDef="let element"> {{element.sourceReference}} </td>
+    </ng-container>
+    <ng-container matColumnDef="crossReference">
+      <th mat-header-cell *matHeaderCellDef>Cross Reference</th>
+      <td mat-cell *matCellDef="let element"> {{element.crossReference}} </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+    <ng-container matColumnDef="riskCategory">
+      <th mat-header-cell *matHeaderCellDef>Risk Category</th>
+      <td mat-cell *matCellDef="let element"> {{element.riskCategory}} </td>
+    </ng-container>
+    <ng-container matColumnDef="riskDescription">
+      <th mat-header-cell *matHeaderCellDef> Risk Description</th>
+      <td mat-cell *matCellDef="let element"> {{element.riskDescription}} </td>
+    </ng-container>
+    <ng-container matColumnDef="pic">
+      <th mat-header-cell *matHeaderCellDef> PIC </th>
+      <td mat-cell *matCellDef="let element"> {{element.pic}} </td>
+    </ng-container>
+    <ng-container matColumnDef="impact">
+      <th mat-header-cell *matHeaderCellDef> Impact </th>
+      <td mat-cell *matCellDef="let element"> {{element.impact}} </td>
+    </ng-container>
+    <ng-container matColumnDef="likelihood">
+      <th mat-header-cell *matHeaderCellDef> Likelihood </th>
+      <td mat-cell *matCellDef="let element"> {{element.likelihood}} </td>
+    </ng-container>
+    <ng-container matColumnDef="severity">
+      <th mat-header-cell *matHeaderCellDef> Severity </th>
+      <td mat-cell *matCellDef="let element"> {{element.severity}} </td>
+    </ng-container>
+    <ng-container matColumnDef="response">
+      <th mat-header-cell *matHeaderCellDef> Response </th>
+      <td mat-cell *matCellDef="let element"> {{element.response}} </td>
+    </ng-container>
+    <ng-container matColumnDef="responsePlan">
+      <th mat-header-cell *matHeaderCellDef> Response Plan </th>
+      <td mat-cell *matCellDef="let element"> {{element.responsePlan}} </td>
+    </ng-container>
+    <ng-container matColumnDef="targetDate">
+      <th mat-header-cell *matHeaderCellDef> Target Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.targetDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="addToDo">
+      <th mat-header-cell *matHeaderCellDef> Add To Do </th>
+      <td mat-cell *matCellDef="let element"> {{element.addToDo}} </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+    <ng-container matColumnDef="convertToIssue">
+      <th mat-header-cell *matHeaderCellDef> Convert To Issue </th>
+      <td mat-cell *matCellDef="let element"> {{element.convertToIssue}} </td>
+    </ng-container>
+    <ng-container matColumnDef="cost">
+      <th mat-header-cell *matHeaderCellDef> Cost </th>
+      <td mat-cell *matCellDef="let element"> {{element.cost}} </td>
+    </ng-container>
+    <ng-container matColumnDef="currency">
+      <th mat-header-cell *matHeaderCellDef> Currency </th>
+      <td mat-cell *matCellDef="let element"> {{element.currency}} </td>
+    </ng-container>
+    <ng-container matColumnDef="schedule">
+      <th mat-header-cell *matHeaderCellDef> Schedule</th>
+      <td mat-cell *matCellDef="let element"> {{element.schedule}} </td>
+    </ng-container>
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef> Duration </th>
+      <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+    </ng-container>
+    <ng-container matColumnDef="impactDetails">
+      <th mat-header-cell *matHeaderCellDef> Impact Details </th>
+      <td mat-cell *matCellDef="let element"> {{element.impactDetails}} </td>
+    </ng-container>
+    <ng-container matColumnDef="rank">
+      <th mat-header-cell *matHeaderCellDef> Rank</th>
+      <td mat-cell *matCellDef="let element"> {{element.rank}} </td>
+    </ng-container>
+    <ng-container matColumnDef="derivative">
+      <th mat-header-cell *matHeaderCellDef> Derivative </th>
+      <td mat-cell *matCellDef="let element"> {{element.derivative}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="headerArr; sticky: true"></tr>
@@ -12,6 +99,6 @@
   </table>
   <mat-paginator  showFirstLastButtons [pageSizeOptions]="[3]"></mat-paginator>
 </div>
-</div>
+
 <br>
 <app-upload></app-upload>

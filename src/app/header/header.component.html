@@ -11,8 +11,7 @@
       <mat-nav-list>
         <div>
           <img src="assets/img/abstract_smooth_wave_background_vector_grapihic_art_569579.jpg"
-               alt="Avatar" class="img-responsive">
-        </div>
+               class="img-responsive" alt="Avatar"></div>
         <a mat-list-item class="active" style="cursor: pointer">Home</a>
         <a mat-list-item style="cursor: pointer">My To Do</a>
         <a mat-list-item style="cursor: pointer">Settings</a>
@@ -26,8 +25,5 @@
         <a mat-list-item href="#" (click)="logOut()"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a>
       </mat-nav-list>
     </mat-sidenav>
-
-    <mat-sidenav-content>
-      <app-dashboard></app-dashboard>
-    </mat-sidenav-content>
   </mat-sidenav-container>
+  <app-dashboard></app-dashboard>

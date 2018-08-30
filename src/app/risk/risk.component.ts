@@ -2,6 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ExcelUploadService} from '../services/excel-upload.service';
 import {MatPaginator, MatSort} from '@angular/material';
 import {MatTableDataSource} from '@angular/material/table';
+import {GetRecordsService} from '../services/get-records.service';
+import {Risk} from '../model/model.risk';
 
 @Component({
   selector: 'app-risk',
@@ -11,25 +13,23 @@ import {MatTableDataSource} from '@angular/material/table';
 export class RiskComponent implements OnInit {
   dataArr;
   headerArr;
-  dataSource ;
+  dataSource;
+  risk: Risk[];
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(public uploadService: ExcelUploadService) { }
+  constructor(public uploadService: ExcelUploadService, public getService: GetRecordsService) { }
 
   ngOnInit() {
-    this.uploadService.uploadFile$.subscribe(
-      (file: File) => {
-        console.log('file');
-        console.log(file);
-        if (!!file && !!file[0]) {
-          this.headerArr = Object.keys(file[0]);
-        }
-        this.dataArr = file;
-        this.dataSource  = new MatTableDataSource(this.dataArr);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      }
-    );
+    this.getData();
   }
-
+  getData() {
+    this.getService.getData().subscribe((data) => {
+      this.risk = data;
+      this.headerArr = Object.keys(this.risk[0]);
+      this.dataSource  = new MatTableDataSource(this.risk);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
 }
