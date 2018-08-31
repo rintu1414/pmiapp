@@ -14,6 +14,7 @@ export class RiskComponent implements OnInit {
   dataArr;
   headerArr;
   dataSource;
+  file: File;
   risk: Risk[];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -23,6 +24,7 @@ export class RiskComponent implements OnInit {
   ngOnInit() {
     this.getData();
   }
+
   getData() {
     this.getService.getData().subscribe((data) => {
       this.risk = data;

@@ -1,5 +1,5 @@
 
-  <div class="table-responsive-sm table-hover">
+  <div class="table-responsive table-hover">
   <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z23">
     <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Risk Id</th>
@@ -97,7 +97,7 @@
     <tr mat-header-row *matHeaderRowDef="headerArr; sticky: true"></tr>
     <tr mat-row  *matRowDef="let row; columns: headerArr;"></tr>
   </table>
-  <mat-paginator  showFirstLastButtons [pageSizeOptions]="[3]"></mat-paginator>
+  <mat-paginator  showFirstLastButtons [pageSizeOptions]="[5]"></mat-paginator>
 </div>
 
 <br>
