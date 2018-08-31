@@ -17,6 +17,7 @@ th.mat-header-cell {
   align-items: center;
   padding: 9px;
   background-color: steelblue;
+  font-weight: bolder;
 }
 
 .mat-row:hover {
