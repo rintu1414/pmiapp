@@ -99,6 +99,15 @@
   </table>
   <mat-paginator  showFirstLastButtons [pageSizeOptions]="[5]"></mat-paginator>
 </div>
-
 <br>
-<app-upload></app-upload>
+<span class="btn btn-default btn-file">
+    Export <input type="file" (change)="incomingfile($event)"  accept=".xlsx">
+</span>
+  &nbsp;&nbsp;
+  <span class="btn btn-default btn-file" style="alignment: center">
+    Import <input type="file" (change)="incomingfile($event)"  accept=".xlsx">
+</span>
+  &nbsp;&nbsp;
+  <span class="btn btn-default btn-file" style="alignment: center">
+    Save <input type="file" (change)="incomingfile($event)"  accept=".xlsx">
+</span>

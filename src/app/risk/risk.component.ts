@@ -24,7 +24,17 @@ export class RiskComponent implements OnInit {
   ngOnInit() {
     this.getData();
   }
-
+  incomingfile(event) {
+    this.uploadService.uploadFile$.subscribe(
+      (file: File) => {
+        const header: String[] = [];
+        console.log('file');
+        console.log(file);
+  }
+    );
+    this.file = event.target.files[0];
+    this.uploadService.uploadExcel(this.file);
+  }
   getData() {
     this.getService.getData().subscribe((data) => {
       this.risk = data;
