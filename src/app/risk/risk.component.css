@@ -8,7 +8,7 @@ th.mat-sort-header-sorted {
   color: black;
   }
 
-.mat-cell {
+td.mat-cell {
   align-items: center;
   white-space: nowrap;
 }
@@ -16,7 +16,6 @@ th.mat-sort-header-sorted {
 th.mat-header-cell {
   align-items: center;
   padding: 9px;
-  background-color: steelblue;
   font-weight: bolder;
 }
 
@@ -28,6 +27,7 @@ th.mat-header-cell {
 .btn-file {
   position: relative;
   overflow: hidden;
+  background-color: steelblue;
 }
 .btn-file input[type=file] {
   position: absolute;
@@ -44,3 +44,4 @@ th.mat-header-cell {
   cursor: inherit;
   display: block;
 }
+
