@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RiskComponent } from './risk/risk.component';
-import {DataTableModule} from 'angular-6-datatable';
 import {
   MatDividerModule,
   MatPaginatorModule,
@@ -13,7 +12,14 @@ import {
   MatMenuModule,
   MatIconModule,
   MatButtonModule,
-  MatToolbarModule, MatCheckboxModule, MatSidenavModule, MatExpansionModule, MatListModule
+  MatToolbarModule,
+  MatCheckboxModule,
+  MatSidenavModule,
+  MatExpansionModule,
+  MatListModule,
+  MatProgressSpinnerModule,
+  MatDialogModule,
+  MatTabsModule
 } from '@angular/material';
 import { UploadComponent } from './upload/upload.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -33,6 +39,7 @@ import {EqualValidator} from './custom-validators/equal-validator';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { RiskTabComponent } from './risk/risk-tab/risk-tab.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -49,7 +56,8 @@ export function tokenGetter() {
     ExistingUsernameValidatorDirective,
     ExistingEmailValidatorDirective,
     EqualValidator,
-    DashboardComponent
+    DashboardComponent,
+    RiskTabComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +68,6 @@ export function tokenGetter() {
         blacklistedRoutes: ['localhost:3001/auth/']
       }
     }),
-    DataTableModule,
     MatDividerModule,
     MatTableModule,
     MatPaginatorModule,
@@ -85,7 +92,10 @@ export function tokenGetter() {
     MatSidenavModule,
     FlexLayoutModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatTabsModule
   ],
   providers: [UrlPermission,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

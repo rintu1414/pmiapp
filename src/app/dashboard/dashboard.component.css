@@ -5,8 +5,100 @@ mat-card{
 .scrolling-wrapper {
   overflow-x: scroll;
   overflow-y: hidden;
-  white-space: nowrap;
 }
+
 .mat-grid-tile {
   display: inline-block;
+}
+
+.slider {
+  /* line them up horizontally */
+  display: flex;
+
+  padding-top: 30%;
+
+  /* allow for scrolling */
+  overflow-x: auto;
+
+  /* make it smooth on iOS */
+  -webkit-overflow-scrolling: touch;
+}
+.slider > div {
+  /* make sure the width is honored */
+  flex-shrink: 0;
+  width: 400px;
+  height: 400px;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 15%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 47%;
+    display: block;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+}
+
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+  .column {
+    width: 47%;
+    display: block;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {  .column {
+  width: 47%;
+  display: block;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {  .column {
+  width: 47%;
+  display: block;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {  .column {
+  width: 47%;
+  display: block;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  text-align: center;
+  background-color: #f1f1f1;
 }

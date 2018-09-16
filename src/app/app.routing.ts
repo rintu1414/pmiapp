@@ -6,6 +6,7 @@ import {RegisterComponent} from './user/register/register.component';
 import {UploadComponent} from './upload/upload.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {RiskComponent} from './risk/risk.component';
+import {RiskTabComponent} from './risk/risk-tab/risk-tab.component';
 
 
 const appRoutes: Routes = [
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
   { path: 'upload', component: UploadComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'risk', component: RiskComponent },
+  { path: 'riskTab', component: RiskTabComponent },
   // otherwise redirect to profile
   { path: '**', redirectTo: '/login' }
 ];

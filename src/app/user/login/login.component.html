@@ -6,7 +6,7 @@
   <div class="container">
     <label for="username"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" id="username" name="uname" [(ngModel)]="user.usernameOrEmail" #username="ngModel"  required>
-    <div *ngIf="f.submitted && !username.valid" class="help-block">an valid username or email is required</div>
+   <div *ngIf="f.submitted && !username.valid" class="help-block">an valid username or email is required</div>
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" id="password" name="psw" [(ngModel)]="user.password" #password="ngModel" required>
     <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>

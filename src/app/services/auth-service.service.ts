@@ -11,10 +11,12 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 export class AuthServiceService {
   private authUrl = '/api/auth/signin';
   private registerUrl = '/api/auth/signup';
-  private regUser = new BehaviorSubject<any>(User);
-  public regUser$ = this.regUser.asObservable();
+  private loggedIn = new BehaviorSubject<boolean>(false); // {1}
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
+  get isLoggedIn() {
+    return this.loggedIn.asObservable(); // {2}
+  }
 
   constructor(private http: HttpClient) {
   }
@@ -32,6 +34,7 @@ export class AuthServiceService {
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify({name: user.usernameOrEmail, roles: decodeToken.scopes, token: token }));
           // return true to indicate successful login
+          this.loggedIn.next(true);
           return true;
         } else {
           // return false to indicate failed login
@@ -54,5 +57,6 @@ export class AuthServiceService {
   logout(): void {
     // clear token remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    this.loggedIn.next(false);
   }
 }
