@@ -11,9 +11,11 @@
     <input type="password" placeholder="Enter Password" id="password" name="psw" [(ngModel)]="user.password" #password="ngModel" required>
     <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
     <button [disabled]="loading" type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+    <div class="checkbox checkbox-slider--b-flat checkbox-slider-md">
+      <label>
+        <input type="checkbox" checked=""><span>&nbsp;Remember Me</span>
+      </label>
+    </div>
   </div>
 
  <div class="register">
