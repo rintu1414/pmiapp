@@ -1,6 +1,8 @@
 /* Bordered form */
 form {
   border: 3px solid #f1f1f1;
+  border-radius: 13px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Full-width inputs */
@@ -75,4 +77,6 @@ span.psw {
 .register {
   background-color: #f1f1f1;
   text-align: center;
+  width: 100%;
+  height: auto;
 }

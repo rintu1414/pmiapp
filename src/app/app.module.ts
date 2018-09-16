@@ -40,6 +40,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { RiskTabComponent } from './risk/risk-tab/risk-tab.component';
+import {AngularDraggableModule} from 'angular2-draggable';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -95,7 +96,8 @@ export function tokenGetter() {
     MatListModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    AngularDraggableModule
   ],
   providers: [UrlPermission,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
