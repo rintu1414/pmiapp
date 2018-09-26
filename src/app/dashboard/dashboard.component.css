@@ -23,6 +23,10 @@ mat-card{
   /* make it smooth on iOS */
   -webkit-overflow-scrolling: touch;
 }
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
 .slider > div {
   /* make sure the width is honored */
   flex-shrink: 0;

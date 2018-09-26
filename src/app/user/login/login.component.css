@@ -174,7 +174,7 @@ Slider B-flat
   animation: popIn ease-in 0.3s normal;
 }
 .checkbox-slider--b-flat input:checked + span:before {
-  background: #5cb85c;
+  background: steelblue;
 }
 .checkbox-slider--b-flat.checkbox-slider-md input + span:before {
   border-radius: 30px;
