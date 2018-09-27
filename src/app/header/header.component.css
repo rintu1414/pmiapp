@@ -1,7 +1,8 @@
 
+/*
 .pmi-is-mobile .pmi-toolbar {
   position: fixed;
-  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  !* Make sure the toolbar will stay on top of the content as it scrolls past. *!
   background: steelblue;
   z-index: 2;
 }
@@ -11,18 +12,54 @@ h1.pmi-app-name {
 }
 
 .pmi-sidenav-container {
-  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  !* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. *!
   flex: 1;
 }
 
 .pmi-is-mobile .pmi-sidenav-container {
-  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-     `<body>` to be our scrolling element for mobile layouts. */
+  !* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. *!
   flex: 1 0 auto;
 }
 
 .img-responsive {
   width: 100%;
   height: auto;
+}
+*/
+/*
+ * Actual Sticky Footer Styles
+ */
+.all-wrap {
+  min-height: 100vh;
+}
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.content {
+  flex: 1;
+}
+/*
+ * Make the Component injected by Router Outlet full height:
+ */
+main {
+  display: flex;
+  flex-direction: column;
+}
+main > *:not(router-outlet) {
+  flex: 1;
+  display: block;
+}
+
+
+footer {
+  background: #efefef;
+  padding: 15px;
+}
+
+.pmi-toolbar {
+  background-color: steelblue;
 }
