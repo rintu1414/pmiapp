@@ -51,8 +51,7 @@ export class ExcelUploadService {
       const worksheet = workbook.Sheets[first_sheet_name];
       this.fileData = XLSX.utils.sheet_to_json(worksheet, {raw: true});
       console.log(this.fileData);
-      this.uploadFile.next(this.fileData.filter(
-        task => !!task[Object.keys(task)[0]]));
+      this.uploadFile.next(this.fileData);
     };
 
   }
