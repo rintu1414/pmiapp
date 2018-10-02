@@ -33,10 +33,9 @@ export class RiskComponent implements OnInit {
   incomingfile(event) {
     this.uploadService.uploadFile$.subscribe(
       (file: File) => {
-        const header: String[] = [];
-        console.log('file');
-        console.log(file);
-
+        this.headerArr = [];
+        this.dataSource = new MatTableDataSource([]);
+        this.ngOnInit();
   }
     );
     this.file = event.target.files[0];
