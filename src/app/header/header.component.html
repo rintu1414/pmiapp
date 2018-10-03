@@ -46,7 +46,7 @@
      <mat-nav-list>
 
 
-       <a mat-list-item style="cursor: pointer" *ngIf="isLoggedIn$ | async"><span class="glyphicon glyphicon-user"></span> {{ currentUser.name }}</a>
+       <a mat-list-item style="cursor: pointer" *ngIf="isLoggedIn$ && currentUser"><span class="glyphicon glyphicon-user"></span> {{ currentUser.name }}</a>
 
 
        <a mat-list-item href="#" (click)="logOut()"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a>

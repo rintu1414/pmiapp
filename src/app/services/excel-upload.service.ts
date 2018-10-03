@@ -62,7 +62,10 @@ export class ExcelUploadService {
     this.fileReader.readAsArrayBuffer(file);
     this.uploadFile.subscribe((uploadData) => {
       this.postRecordService.postData(uploadData).subscribe(data => {console.log(data);
-      });
+      },
+        err => {
+          throw err;
+        });
     })
    ;
   }

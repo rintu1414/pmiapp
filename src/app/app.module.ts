@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import { AppComponent } from './app.component';
 import { RiskComponent } from './risk/risk.component';
 import {
@@ -41,6 +41,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { RiskTabComponent } from './risk/risk-tab/risk-tab.component';
 import {AngularDraggableModule} from 'angular2-draggable';
+import { ErrorComponent } from './error/error.component';
+import {GlobalErrorHandlerServiceService} from './error/global-error-handler-service.service';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -58,7 +60,8 @@ export function tokenGetter() {
     ExistingEmailValidatorDirective,
     EqualValidator,
     DashboardComponent,
-    RiskTabComponent
+    RiskTabComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -99,9 +102,10 @@ export function tokenGetter() {
     MatTabsModule,
     AngularDraggableModule
   ],
-  providers: [UrlPermission,
+  providers: [UrlPermission, GlobalErrorHandlerServiceService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: ErrorHandler, useClass: GlobalErrorHandlerServiceService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,6 +7,8 @@ import {UploadComponent} from './upload/upload.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {RiskComponent} from './risk/risk.component';
 import {RiskTabComponent} from './risk/risk-tab/risk-tab.component';
+import {GlobalErrorHandlerServiceService} from './error/global-error-handler-service.service';
+import {ErrorComponent} from './error/error.component';
 
 
 const appRoutes: Routes = [
@@ -15,6 +17,10 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'upload', component: UploadComponent },
   { path: 'dashboard', component: DashboardComponent },
+  {
+    path: 'error',
+    component: ErrorComponent
+  },
   { path: 'risk', component: RiskComponent },
   { path: 'riskTab', component: RiskTabComponent },
   // otherwise redirect to profile
