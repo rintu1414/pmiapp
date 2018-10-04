@@ -17,6 +17,7 @@ export class RiskComponent implements OnInit {
   file: File;
   risk: Risk[];
   loading  =  true;
+  a: any = {'a':'1','b':'2'};
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
