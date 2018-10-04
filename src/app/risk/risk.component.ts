@@ -17,7 +17,58 @@ export class RiskComponent implements OnInit {
   file: File;
   risk: Risk[];
   loading  =  true;
-  a: any = {'a':'1','b':'2'};
+  // Rare	Insignificant
+  // Unlikely	Insignificant
+  // Possible	Insignificant
+  // Likely	Insignificant
+  // Rare	Minor
+  // Unlikely	Minor
+  // Certain	Insignificant
+  // Possible	Minor
+  // Likely	Minor
+  // Certain	Minor
+  // Rare	Moderate
+  // Unlikely	Moderate
+  // Rare	Major
+  // Possible	Moderate
+  // Likely	Moderate
+  // Certain	Moderate
+  // Unlikely	Major
+  // Possible	Major
+  // Rare	Catastrophic
+  // Likely	Major
+  // Certain	Major
+  // Unlikely	Catastrophic
+  // Possible	Catastrophic
+  // Likely	Catastrophic
+  // Certain	Catastrophic
+  rank: any = {
+    'Rare#Insignificant': '1',
+    'Unlikely#Insignificant': '2',
+    'Possible#Insignificant': '3',
+    'Likely#Insignificant': '4',
+    'Rare#Minor': '5',
+    'Unlikely#Minor': '6',
+    'Certain#Insignificant': '7',
+    'Possible#Minor': '8',
+    'Likely#Minor': '9',
+    'Certain#Minor': '10',
+    'Rare#Moderate': '11',
+    'Rare#Major': '12',
+    'Unlikely#Moderate': '13',
+    'Possible#Moderate': '14',
+    'Likely#Moderate': '15',
+    'Certain#Moderate': '16',
+    'Unlikely#Major': '17',
+    'Possible#Major': '18',
+    'Rare#Catastrophic': '19',
+    'Likely#Major': '20',
+    'Certain#Major': '21',
+    'Unlikely#Catastrophic': '22',
+    'Possible#Catastrophic': '23',
+    'Likely#Catastrophic': '24',
+    'Certain#Catastrophic': '25'
+  };
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
