@@ -1,24 +1,51 @@
-<form name="form-signin" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-  <div class="imgcontainer">
-    <img src="assets/img/avatar2.png" alt="Avatar" class="avatar">
-  </div>
-  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
-  <div class="container">
-    <label for="username"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" id="username" name="uname" [(ngModel)]="user.usernameOrEmail" #username="ngModel"  required>
-   <div *ngIf="f.submitted && !username.valid" class="help-block">an valid username or email is required</div>
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" id="password" name="psw" [(ngModel)]="user.password" #password="ngModel" required>
-    <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-    <button [disabled]="loading" type="submit">Login</button>
-    <div class="checkbox checkbox-slider--b-flat checkbox-slider-md">
-      <label>
-        <input type="checkbox" checked=""><span>&nbsp;Remember Me</span>
-      </label>
-    </div>
-  </div>
+<div class="container py-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row justify-content-md-center h-100">
+        <div class="col-md-6 mx-auto">
+          <div class="brand">
+            <img src="assets/img/logo.jpg">
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+          <!-- form card login -->
+          <div class="card rounded-0">
+            <div class="card-header">
+              <h3 class="mb-0">Login</h3>
+            </div>
+            <div class="card-body">
+              <form class="form" name="form-signin" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control form-control-lg rounded-0" placeholder="Enter Username" id="username" name="uname" [(ngModel)]="user.usernameOrEmail" #username="ngModel"  required>
+                  <div *ngIf="f.submitted && !username.valid" class="help-block">A valid username or email is required</div>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control form-control-lg rounded-0" placeholder="Enter Password" id="password" name="psw" [(ngModel)]="user.password" #password="ngModel" required>
+                  <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                </div>
+                <div class="checkbox checkbox-slider&#45;&#45;b-flat checkbox-slider-md">
+                  <label>
+                    <input type="checkbox" checked=""><span>&nbsp;Remember Me</span>
+                  </label>
+                </div>
+                <p><a [routerLink]="['/register']" class="btn btn-link float-left">Register</a><p>
+                <button [disabled]="loading" type="submit" class="btn btn-danger btn-sm float-right" id="btnLogin">Login</button>
+              </form>
+            </div>
+            <!--/card-block-->
+          </div>
+          <!-- /form card login -->
 
- <div class="register">
-    <p>Not Registered? <a [routerLink]="['/register']" class="btn btn-link">Register</a><p>
+        </div>
+
+
+      </div>
+      <!--/row-->
+
+    </div>
+    <!--/col-->
   </div>
- </form>
+  <!--/row-->
+</div>
+<!--/container-->
