@@ -176,3 +176,9 @@
 .container::-webkit-scrollbar {
   display: none;
 }
+
+.footer {
+  margin: 40px 0;
+  color: #888;
+  text-align: center;
+}

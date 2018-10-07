@@ -29,14 +29,22 @@
                     <input type="checkbox" checked=""><span>&nbsp;Remember Me</span>
                   </label>
                 </div>
-                <p><a [routerLink]="['/register']" class="btn btn-link float-left">Register</a><p>
-                <button [disabled]="loading" type="submit" class="btn btn-danger btn-sm float-right" id="btnLogin">Login</button>
+                 <div class="form-group no-margin">
+                  <button [disabled]="loading" type="submit" class="btn btn-primary btn-block" id="btnLogin">
+                    Login
+                  </button>
+                </div>
+                <div class="margin-top20 text-center">
+                  Don't have an account? <a [routerLink]="['/register']">Create One</a>
+                </div>
               </form>
             </div>
             <!--/card-block-->
           </div>
           <!-- /form card login -->
-
+          <div class="footer">
+            Copyright &copy; Your Company 2018
+          </div>
         </div>
 
 

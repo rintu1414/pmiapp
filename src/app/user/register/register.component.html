@@ -11,7 +11,7 @@
     </div>
   </div>
   <label for="userName"><b>User Id</b></label>
-  <input type="text" id="userName" placeholder="Enter User Id" name="usernameOrEmail" required app-usernameExists [(ngModel)]="user.usernameOrEmail" #userName="ngModel" minlength="5" maxlength="8">
+  <input type="text" id="userName" placeholder="Enter User Id" name="usernameOrEmail" required app-usernameExists [(ngModel)]="user.usernameOrEmail" #userName="ngModel" minlength="5" maxlength="15">
   <div *ngIf="userName.dirty && userName.errors" class = "error">
     <div *ngIf="userName.errors['required']">
       is required (minimum 5 characters).
