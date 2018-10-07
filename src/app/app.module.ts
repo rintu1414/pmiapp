@@ -43,6 +43,7 @@ import { RiskTabComponent } from './risk/risk-tab/risk-tab.component';
 import {AngularDraggableModule} from 'angular2-draggable';
 import { ErrorComponent } from './error/error.component';
 import {GlobalErrorHandlerServiceService} from './error/global-error-handler-service.service';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -61,7 +62,7 @@ export function tokenGetter() {
     EqualValidator,
     DashboardComponent,
     RiskTabComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,7 +101,8 @@ export function tokenGetter() {
     MatProgressSpinnerModule,
     MatDialogModule,
     MatTabsModule,
-    AngularDraggableModule
+    AngularDraggableModule,
+    GoogleChartsModule
   ],
   providers: [UrlPermission, GlobalErrorHandlerServiceService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

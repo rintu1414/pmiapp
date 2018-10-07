@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RiskTabComponent implements OnInit {
 
+  myData = [
+    ['London', 8136000],
+    ['New York', 8538000],
+    ['Paris', 2244000],
+    ['Berlin', 3470000],
+    ['Kairo', 19500000]
+  ];
+
+  type = 'BarChart';
+
   constructor() { }
 
   ngOnInit() {
