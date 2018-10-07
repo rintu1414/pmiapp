@@ -35,14 +35,11 @@ hr {
   padding: 16px 20px;
   margin: 8px 0;
   border: none;
-  cursor: pointer;
   width: 100%;
   opacity: 0.9;
 }
 
-.registerbtn:hover {
-  opacity:1;
-}
+
 
 /* Add a blue text color to links */
 a {

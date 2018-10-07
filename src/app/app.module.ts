@@ -43,6 +43,8 @@ import { RiskTabComponent } from './risk/risk-tab/risk-tab.component';
 import {AngularDraggableModule} from 'angular2-draggable';
 import { ErrorComponent } from './error/error.component';
 import {GlobalErrorHandlerServiceService} from './error/global-error-handler-service.service';
+import { PiechartComponent } from './chart/piechart/piechart.component';
+import {GooglePieChartsService} from './services/google-pie-charts.service';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -61,7 +63,8 @@ export function tokenGetter() {
     EqualValidator,
     DashboardComponent,
     RiskTabComponent,
-    ErrorComponent
+    ErrorComponent,
+    PiechartComponent
   ],
   imports: [
     BrowserModule,
@@ -102,10 +105,10 @@ export function tokenGetter() {
     MatTabsModule,
     AngularDraggableModule
   ],
-  providers: [UrlPermission, GlobalErrorHandlerServiceService,
+  providers: [UrlPermission, GlobalErrorHandlerServiceService, GooglePieChartsService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: ErrorHandler, useClass: GlobalErrorHandlerServiceService }],
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+ //   { provide: ErrorHandler, useClass: GlobalErrorHandlerServiceService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

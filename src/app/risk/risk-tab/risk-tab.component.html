@@ -3,6 +3,12 @@
   <mat-tab label="First">
     <app-risk></app-risk>
   </mat-tab>
-  <mat-tab label="Second"> Content 2 </mat-tab>
+  <mat-tab label="Second">
+
+
+          <div><app-piechart [data]="data1" [config]="config1" [elementId]="elementId1"></app-piechart></div>
+          <div><app-piechart [data]="data2" [config]="config2" [elementId]="elementId2"></app-piechart></div>
+
+  </mat-tab>
   <mat-tab label="Third"> Content 3 </mat-tab>
 </mat-tab-group>
