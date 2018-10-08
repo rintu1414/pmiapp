@@ -37,7 +37,7 @@
     </div>
   </div>
   <label for="pwd"><b>Password</b></label>
-  <input type="password" id="pwd" placeholder="Enter Password" name="password" [(ngModel)]="user.password" #pwd="ngModel" required minlength="6" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{7,}$">
+  <input type="password" id="pwd" placeholder="Enter Password" name="password" [(ngModel)]="user.password" #pwd="ngModel" required minlength="6">
   <div *ngIf="pwd.dirty && pwd.errors" class = "error">
     <div *ngIf="pwd.errors['required']">
       Password is too short (Minimum 6 characters needed)

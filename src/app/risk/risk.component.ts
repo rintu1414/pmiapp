@@ -17,31 +17,7 @@ export class RiskComponent implements OnInit {
   file: File;
   risk: Risk[];
   loading  =  true;
-  // Rare	Insignificant
-  // Unlikely	Insignificant
-  // Possible	Insignificant
-  // Likely	Insignificant
-  // Rare	Minor
-  // Unlikely	Minor
-  // Certain	Insignificant
-  // Possible	Minor
-  // Likely	Minor
-  // Certain	Minor
-  // Rare	Moderate
-  // Unlikely	Moderate
-  // Rare	Major
-  // Possible	Moderate
-  // Likely	Moderate
-  // Certain	Moderate
-  // Unlikely	Major
-  // Possible	Major
-  // Rare	Catastrophic
-  // Likely	Major
-  // Certain	Major
-  // Unlikely	Catastrophic
-  // Possible	Catastrophic
-  // Likely	Catastrophic
-  // Certain	Catastrophic
+
   rank: any = {
     'Rare#Insignificant': '1',
     'Unlikely#Insignificant': '2',

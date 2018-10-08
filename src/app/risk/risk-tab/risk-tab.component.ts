@@ -8,14 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class RiskTabComponent implements OnInit {
 
   myData = [
-    ['London', 8136000],
-    ['New York', 8538000],
-    ['Paris', 2244000],
-    ['Berlin', 3470000],
-    ['Kairo', 19500000]
+    [1, 1],
+    [2, 2],
+    [3, 3],
+    [4, 4],
+    [5, 5]
   ];
 
-  type = 'BarChart';
+  columnNames = ['Age', 'Weight'];
+  roles = [];
+
+  type = 'ScatterChart';
 
   constructor() { }
 
