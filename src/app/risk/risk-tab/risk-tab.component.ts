@@ -19,6 +19,10 @@ export class RiskTabComponent implements OnInit {
   title: 'Patterns',
   type = 'PieChart';
 
+  areatitle = 'Response';
+  areaType = 'AreaChart';
+
+
   rank: any = {'1': {'color': 'yellow', 'data': {}},
     '2': {'color': 'yellow', 'data': {}},
     '3': {'color': 'yellow', 'data': {}},
@@ -52,6 +56,15 @@ export class RiskTabComponent implements OnInit {
     ['2', '5', '9', '14', '19'],
     ['1', '3', '6', '10', '15']];
 
+  areaData : any =  [
+    ['2013', 1000, 400],
+  ['2014', 1170, 460],
+  ['2015', 660, 1120],
+  ['2016', 1030, 540]
+];
+
+  columnNamesArea: any = ['Year', 'Sales', 'Expenses'];
+
   constructor() { }
 
   ngOnInit() {
@@ -61,5 +74,6 @@ export class RiskTabComponent implements OnInit {
   getCss(i: String) {
     return this.rank[i].color;
 }
+
 
 }
