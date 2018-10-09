@@ -8,17 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class RiskTabComponent implements OnInit {
 
   myData = [
-    [1, 1],
-    [2, 2],
-    [3, 3],
-    [4, 4],
-    [5, 5]
+    ['Resource', 3],
+    ['Procurement', 2],
+    ['Technology', 5],
+    ['Process',3]
   ];
 
-  columnNames = ['Age', 'Weight'];
+  columnNames = ['Category', 'Total'];
   roles = [];
-
-  type = 'ScatterChart';
+  title: 'Patterns',
+  type = 'PieChart';
 
   rank: any = {'1': {'color': 'yellow', 'data': {}},
     '2': {'color': 'yellow', 'data': {}},

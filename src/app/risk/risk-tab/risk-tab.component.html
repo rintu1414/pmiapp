@@ -4,12 +4,6 @@
     <app-risk></app-risk>
   </mat-tab>
   <mat-tab label="Second">
- <!--   <google-chart
-      [type]="type"
-      [data]="myData"
-      [columnNames]="columnNames"
-      [roles]="roles">
-    </google-chart>-->
     <table class="table">
       <tr *ngFor="let tabs of ta">
         <td *ngFor="let tabsd of tabs" [ngClass]= getCss(tabsd) >
@@ -18,5 +12,14 @@
         </td>
       </tr>
     </table>
+    <hr>
+    <google-chart
+      [title]="title"
+      [type]="type"
+      [data]="myData"
+      [columnNames]="columnNames"
+      [roles]="roles">
+    </google-chart>
+
     </mat-tab>
 </mat-tab-group>
