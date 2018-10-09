@@ -45,3 +45,26 @@ th.mat-header-cell {
   display: block;
 }
 
+.yellow{
+  background-color: yellow;
+}
+
+.amber{
+  background-color: gold;
+}
+
+.golden{
+  background-color: goldenrod;
+}
+.red{
+  background-color: #d9534f;
+}
+
+.table{
+  border:1px solid;
+  padding-top: 5%;
+}
+.table tr {
+  width:7%;
+  height:14%;
+}
