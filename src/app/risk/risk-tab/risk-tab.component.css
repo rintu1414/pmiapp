@@ -12,3 +12,11 @@
 .red{
   background-color: #d9534f;
 }
+
+.table{
+  border:1px solid;
+}
+.table tr {
+  width:7%;
+  height:14%;
+}

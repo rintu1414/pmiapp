@@ -10,10 +10,11 @@
       [columnNames]="columnNames"
       [roles]="roles">
     </google-chart>-->
-    <table>
+    <table class="table">
       <tr *ngFor="let tabs of ta">
-        <td *ngFor="let tabsd of tabs" [ngClass]= getCss(tabsd)>
-
+        <td *ngFor="let tabsd of tabs" [ngClass]= getCss(tabsd) >
+          {{tabsd}}
+          {{getCss(tabsd)}}
         </td>
       </tr>
     </table>

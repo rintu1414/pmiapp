@@ -47,11 +47,11 @@ export class RiskTabComponent implements OnInit {
     '25': {'color': 'red', 'data': {}}
   };
 
-  ta: any = [['1', '3', '6', '10', '15'],
-  ['2', '5', '9', '14', '19'],
-  ['4', '8', '13', '18', '22'],
-  ['7', '12', '17', '21', '24'],
-  ['11', '16', '20', '23', '25']];
+  ta: any = [['11', '16', '20', '23', '25'],
+    ['7', '12', '17', '21', '24'],
+    ['4', '8', '13', '18', '22'],
+    ['2', '5', '9', '14', '19'],
+    ['1', '3', '6', '10', '15']];
 
   constructor() { }
 
@@ -60,7 +60,7 @@ export class RiskTabComponent implements OnInit {
   }
 
   getCss(i: String) {
-    return this.rank;
+    return this.rank[i].color;
 }
 
 }
