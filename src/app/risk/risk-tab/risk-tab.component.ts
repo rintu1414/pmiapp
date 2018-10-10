@@ -11,12 +11,12 @@ export class RiskTabComponent implements OnInit {
     ['Resource', 3],
     ['Procurement', 2],
     ['Technology', 5],
-    ['Process',3]
+    ['Process', 3]
   ];
 
   columnNames = ['Category', 'Total'];
   roles = [];
-  title: 'Patterns',
+  title: 'Patterns';
   type = 'PieChart';
 
   areatitle = 'Response';
@@ -72,7 +72,7 @@ export class RiskTabComponent implements OnInit {
   }
 
   getCss(i: String) {
-    return this.rank[i].color;
+    return this.rank.get(i).color;
 }
 
 

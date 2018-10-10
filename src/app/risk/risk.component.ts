@@ -26,7 +26,7 @@ export class RiskComponent implements OnInit {
 
   columnNames = ['Category', 'Total'];
   roles = [];
-  title: 'Patterns',
+  title = 'Patterns';
   type = 'PieChart';
   columnNamesArea: any = ['Year', 'Sales', 'Expenses'];
   areatitle = 'Response';
@@ -102,6 +102,7 @@ export class RiskComponent implements OnInit {
       this.dataSource  = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.getPieChartData();
     });
   }
   ExportTOExcel() {
@@ -116,7 +117,7 @@ export class RiskComponent implements OnInit {
 
   }
   getCss(i: String) {
-    return this.rank[i].color;
+    return 'yellow';
   }
   getPieChartData() {
     const pieData: any = new Map();
@@ -125,12 +126,12 @@ export class RiskComponent implements OnInit {
      if (pieData.has(task.riskCategory)) {
        const va = pieData.get(task.riskCategory) + 1;
         pieData.set(task.riskCategory, va);
-      }
-      else {
+      } else {
         pieData.set(task.riskCategory, 1);
 
       }
     }); }
-    return pieData;
+      this.myData = Array.from(pieData);
+
   }
 }
