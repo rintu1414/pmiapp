@@ -31,6 +31,15 @@ export class RiskComponent implements OnInit {
   columnNamesArea: any = ['Year', 'Sales', 'Expenses'];
   areatitle = 'Response';
   areaType = 'AreaChart';
+  options = {
+    isStacked: 'relative',
+    height: 300,
+    legend: {position: 'top', maxLines: 2},
+    vAxis: {
+      minValue: 0,
+      ticks: [0, .5, 1]
+    }
+  };
 
 
   rank: any = {'1': {'color': 'yellow', 'data': {}},
@@ -67,7 +76,7 @@ export class RiskComponent implements OnInit {
     ['1', '3', '6', '10', '15']];
 
   areaData: any =  [
-    ['2013', 1000, 400],
+    ['2013', 10, 10],
     ['2014', 1170, 460],
     ['2015', 660, 1120],
     ['2016', 1030, 540]
@@ -103,6 +112,7 @@ export class RiskComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.getPieChartData();
+      this.getAreaChartData();
     });
   }
   ExportTOExcel() {
@@ -117,7 +127,7 @@ export class RiskComponent implements OnInit {
 
   }
   getCss(i: String) {
-    return 'yellow';
+    return this.rank[+i]['color'];
   }
   getPieChartData() {
     const pieData: any = new Map();
@@ -132,6 +142,30 @@ export class RiskComponent implements OnInit {
       }
     }); }
       this.myData = Array.from(pieData);
+
+  }
+
+  getAreaChartData() {
+    const areaChartData: any = new Map();
+    let open = 0;
+    let closed = 0;
+    if (this.dataSource) {
+      this.dataSource.data.forEach((task) => {
+        if (areaChartData.has(task.response)) {
+          open = areaChartData.get(task.response)[1];
+          closed = areaChartData.get(task.response)[2];
+        } else {
+          open = 0;
+          closed = 0;
+        }
+        if (task.status === 'Open') {
+              areaChartData.set(task.riskCategory, [task.riskCategory, open + 1, closed]);
+            } else {
+              areaChartData.set(task.riskCategory, [task.riskCategory, open, closed + 1]);
+            }
+        }); }
+
+    this.areaData = Array.from(areaChartData.values());
 
   }
 }
