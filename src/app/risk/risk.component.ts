@@ -14,6 +14,7 @@ export class RiskComponent implements OnInit {
   dataArr;
   headerArr;
   dataSource;
+  tableCharData;
   file: File;
   risk: Risk[];
   loading  =  true;
@@ -115,6 +116,7 @@ export class RiskComponent implements OnInit {
       this.dataSource.sort = this.sort;
       this.getPieChartData();
       this.getAreaChartData();
+      this.tableCharData = this.getTableChartData();
     });
   }
   ExportTOExcel() {
@@ -147,6 +149,40 @@ export class RiskComponent implements OnInit {
 
   }
 
+  getTableChartData() {
+    const tableChartData: any = new Map();
+    let open = 0;
+    let closed = 0;
+    let dataOpen: string[];
+      dataOpen = new Array();
+    let dataClosed: string[];
+    dataClosed = new Array();
+    if (this.dataSource) {
+      this.dataSource.data.forEach((task) => {
+        dataOpen = [];
+        dataClosed = [];
+        if (tableChartData.has(task.rank)) {
+          open = tableChartData.get(task.rank)['open'];
+          closed = tableChartData.get(task.rank)['closed'];
+          dataOpen = tableChartData.get(task.rank)['dataOpen'];
+          dataClosed = tableChartData.get(task.rank)['dataClosed'];
+        } else {
+          open = 0;
+          closed = 0;
+        }
+        if (task.status === 'Open') {
+          dataOpen.push(task.id);
+          tableChartData.set(task.rank, {'open': open + 1, 'closed' : closed,
+            'dataOpen': dataOpen, 'dataClosed': dataClosed});
+        } else {
+          dataClosed.push(task.id);
+          tableChartData.set(task.rank, {'open': open, 'closed' : closed + 1,
+            'dataOpen': dataOpen, 'dataClosed': dataClosed});
+        }
+      }); }
+  return tableChartData;
+  }
+
   getAreaChartData() {
     const areaChartData: any = new Map();
     let open = 0;
@@ -169,5 +205,44 @@ export class RiskComponent implements OnInit {
 
     this.areaData = Array.from(areaChartData.values());
 
+  }
+
+
+  getClosedData(t) {
+    if (this.tableCharData) {
+      if (this.tableCharData.has(+t)) {
+        return this.tableCharData.get(+t)['closed'];
+      } else {
+        return '';
+      }
+    }
+  }
+  getOpenFullData(t) {
+    if (this.tableCharData) {
+      if (this.tableCharData.has(+t)) {
+        return this.tableCharData.get(+t)['dataOpen'];
+      } else {
+        return '';
+      }
+    }
+  }
+  getOpenClosedData(t) {
+    if (this.tableCharData) {
+      if (this.tableCharData.has(+t)) {
+        return this.tableCharData.get(+t)['dataClosed'];
+      } else {
+        return '';
+      }
+    }
+  }
+
+  getOpenData(t) {
+    if (this.tableCharData) {
+      if (this.tableCharData.has(+t)) {
+        return this.tableCharData.get(+t)['open'];
+      } else {
+        return '';
+      }
+    }
   }
 }
