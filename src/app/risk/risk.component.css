@@ -68,3 +68,34 @@ th.mat-header-cell {
   width:7%;
   height:14%;
 }
+
+
+.chart-wrapper {
+  background: #fff;
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.chart-wrapper .chart-title {
+  border-bottom: 1px solid #d7d7d7;
+  color: #666;
+  font-size: 14px;
+  font-weight: 200;
+  padding: 7px 10px 4px;
+}
+
+.chart-wrapper .chart-stage {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 5px 10px;
+  position: relative;
+
+  /* make it smooth on iOS */
+  -webkit-overflow-scrolling: touch;
+}
+
+
+
+.keen-dashboard .chart-stage .chart-title {
+  border: medium none;
+}

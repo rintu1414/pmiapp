@@ -26,12 +26,12 @@ export class RiskComponent implements OnInit {
 
   columnNames = ['Category', 'Total'];
   roles = [];
-  title = 'Patterns';
+  title = 'Pattern';
   type = 'PieChart';
-  columnNamesArea: any = ['Year', 'Sales', 'Expenses'];
+  columnNamesArea: any = ['Year', 'Open', 'Closed'];
   areatitle = 'Response';
   areaType = 'AreaChart';
-  options = {
+  areaOptions = {
     isStacked: 'relative',
     height: 300,
     legend: {position: 'top', maxLines: 2},
@@ -40,7 +40,9 @@ export class RiskComponent implements OnInit {
       ticks: [0, .5, 1]
     }
   };
-
+  pieOptions = {
+    is3D: 'true'
+  };
 
   rank: any = {'1': {'color': 'yellow', 'data': {}},
     '2': {'color': 'yellow', 'data': {}},
@@ -159,9 +161,9 @@ export class RiskComponent implements OnInit {
           closed = 0;
         }
         if (task.status === 'Open') {
-              areaChartData.set(task.riskCategory, [task.riskCategory, open + 1, closed]);
+              areaChartData.set(task.response, [task.response, open + 1, closed]);
             } else {
-              areaChartData.set(task.riskCategory, [task.riskCategory, open, closed + 1]);
+              areaChartData.set(task.response, [task.response, open, closed + 1]);
             }
         }); }
 

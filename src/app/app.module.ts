@@ -39,7 +39,6 @@ import {EqualValidator} from './custom-validators/equal-validator';
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { RiskTabComponent } from './risk/risk-tab/risk-tab.component';
 import {AngularDraggableModule} from 'angular2-draggable';
 import { ErrorComponent } from './error/error.component';
 import {GlobalErrorHandlerServiceService} from './error/global-error-handler-service.service';
@@ -61,7 +60,6 @@ export function tokenGetter() {
     ExistingEmailValidatorDirective,
     EqualValidator,
     DashboardComponent,
-    RiskTabComponent,
     ErrorComponent,
   ],
   imports: [
