@@ -126,8 +126,16 @@
                 <table class="table">
                   <tr *ngFor="let tabs of ta">
                     <td *ngFor="let tabsd of tabs" [ngClass]= getCss(tabsd) >
-                      {{tabsd}}
-                      {{getCss(tabsd)}}
+                      <div style="float:left; display:inline-block">{{this.getOpenData(tabsd)}}
+                      <span *ngFor="let ta of this.getOpenFullData(tabsd)">
+                      <br/>{{ta}}
+                      </span>
+                    </div>
+                      <div style="float:right; display:inline-block">{{this.getClosedData(tabsd)}}
+                        <span *ngFor="let tae of this.getOpenClosedData(tabsd)">
+                      <br/>{{tae}}
+                      </span>
+                      </div>
                     </td>
                   </tr>
                 </table>
