@@ -4,11 +4,11 @@ phases:
     commands:
        - echo Installing source NPM dependencies...
        - npm install -g @angular/cli
-       - npm install -dev @angular/cli@latest
+       - npm install -dev @angular/cli
   pre_build:
     commands:
       - rm -rf node_modules/
-      - npm install
+      - sudo npm install
   build:
     commands:
        - echo Build started on `date`
