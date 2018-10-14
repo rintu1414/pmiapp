@@ -6,6 +6,7 @@ phases:
        - npm install -g @angular/cli
   pre_build:
     commands:
+      - npm update npm - g
       - rm -rf node_modules/
       - npm install
   build:
