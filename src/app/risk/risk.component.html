@@ -14,6 +14,7 @@
                 <table class="table">
                   <tr *ngFor="let tabs of ta">
                     <td *ngFor="let tabsd of tabs" [ngClass]= getCss(tabsd) >
+
                       <div style="float:left; display:inline-block">{{this.getOpenData(tabsd)}}
                         <span *ngFor="let ta of this.getOpenFullData(tabsd)">
                       <br/>{{ta}}

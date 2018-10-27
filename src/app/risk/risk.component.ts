@@ -210,8 +210,8 @@ export class RiskComponent implements OnInit {
 
   getClosedData(t) {
     if (this.tableCharData) {
-      if (this.tableCharData.has(+t)) {
-        return this.tableCharData.get(+t)['closed'];
+      if (this.tableCharData.has(t)) {
+        return this.tableCharData.get(t)['closed'];
       } else {
         return '';
       }
@@ -219,8 +219,8 @@ export class RiskComponent implements OnInit {
   }
   getOpenFullData(t) {
     if (this.tableCharData) {
-      if (this.tableCharData.has(+t)) {
-        return this.tableCharData.get(+t)['dataOpen'];
+      if (this.tableCharData.has(t)) {
+        return this.tableCharData.get(t)['dataOpen'];
       } else {
         return '';
       }
@@ -228,8 +228,8 @@ export class RiskComponent implements OnInit {
   }
   getOpenClosedData(t) {
     if (this.tableCharData) {
-      if (this.tableCharData.has(+t)) {
-        return this.tableCharData.get(+t)['dataClosed'];
+      if (this.tableCharData.has(t)) {
+        return this.tableCharData.get(t)['dataClosed'];
       } else {
         return '';
       }
@@ -238,8 +238,8 @@ export class RiskComponent implements OnInit {
 
   getOpenData(t) {
     if (this.tableCharData) {
-      if (this.tableCharData.has(+t)) {
-        return this.tableCharData.get(+t)['open'];
+      if (this.tableCharData.has(t)) {
+        return this.tableCharData.get(t)['open'];
       } else {
         return '';
       }
