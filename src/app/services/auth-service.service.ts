@@ -4,13 +4,14 @@ import { map, filter, catchError, mergeMap} from 'rxjs/operators';
 import {User} from '../model/model.user';
 import {BehaviorSubject} from '../../../node_modules/rxjs';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
-  private authUrl = '/api/auth/signin';
-  private registerUrl = '/api/auth/signup';
+  private authUrl = environment.authUrl;
+  private registerUrl = environment.registerUrl;
   private loggedIn = new BehaviorSubject<boolean>(false); // {1}
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
