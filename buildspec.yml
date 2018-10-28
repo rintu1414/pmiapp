@@ -10,8 +10,11 @@ phases:
   build:
     commands:
        - echo Build started on `date`
-       - ng build
+       - ng build --prod
+       - cp 'Dockerfile' 'dist'
 
 artifacts:
   files:
     - '**/*'
+    base-directory: 'dist*'
+    discard-paths: yes
