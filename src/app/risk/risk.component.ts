@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {GetRecordsService} from '../services/get-records.service';
 import {Risk} from '../model/model.risk';
 import * as XLSX from 'xlsx';
+import { noop as _noop } from 'lodash';
 @Component({
   selector: 'app-risk',
   templateUrl: './risk.component.html',
@@ -15,6 +16,7 @@ export class RiskComponent implements OnInit {
   headerArr;
   dataSource;
   tableCharData;
+  limit = 1000;
   file: File;
   risk: Risk[];
   loading  =  true;
@@ -85,7 +87,7 @@ export class RiskComponent implements OnInit {
     ['2016', 1030, 540]
   ];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+ // @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('TABLE', { read: ElementRef }) table: ElementRef;
   constructor(public uploadService: ExcelUploadService, public getService: GetRecordsService) { }
@@ -112,8 +114,8 @@ export class RiskComponent implements OnInit {
     this.getService.getData().subscribe((data) => {
       this.headerArr = Object.keys(data[0]);
       this.dataSource  = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+    //  this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
       this.getPieChartData();
       this.getAreaChartData();
       this.tableCharData = this.getTableChartData();
@@ -130,6 +132,16 @@ export class RiskComponent implements OnInit {
     console.log('exported');
 
   }
+
+  handleScroll = (scrolled: boolean) => {
+    console.log('lastScrolled');
+    scrolled ? this.getData() : _noop();
+    console.log('lastScrolled after');
+  }
+  hasMore = () => !this.dataSource || this.dataSource.data.length < this.limit;
+
+
+
   getCss(i: String) {
     return this.rank[+i]['color'];
   }

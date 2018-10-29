@@ -99,3 +99,14 @@ th.mat-header-cell {
 .keen-dashboard .chart-stage .chart-title {
   border: medium none;
 }
+
+:host {
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+app-scroll-container {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
