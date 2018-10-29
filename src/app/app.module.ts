@@ -43,6 +43,7 @@ import {AngularDraggableModule} from 'angular2-draggable';
 import { ErrorComponent } from './error/error.component';
 import {GlobalErrorHandlerServiceService} from './error/global-error-handler-service.service';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { ScrollContainerComponent } from './scroll-container/scroll-container.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -61,6 +62,7 @@ export function tokenGetter() {
     EqualValidator,
     DashboardComponent,
     ErrorComponent,
+    ScrollContainerComponent,
   ],
   imports: [
     BrowserModule,
