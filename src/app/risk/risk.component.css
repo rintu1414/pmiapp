@@ -89,12 +89,9 @@ th.mat-header-cell {
   overflow-y: hidden;
   padding: 5px 10px;
   position: relative;
-
   /* make it smooth on iOS */
   -webkit-overflow-scrolling: touch;
 }
-
-
 
 .keen-dashboard .chart-stage .chart-title {
   border: medium none;
@@ -109,4 +106,21 @@ th.mat-header-cell {
 app-scroll-container {
   flex-grow: 0;
   flex-shrink: 0;
+}
+
+.backdrop{
+  background-color:rgba(0,0,0,0.6);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+}
+
+.modal-dialog{
+  height: 30%;
+}
+
+.modal-content {
+  height:100%;
 }

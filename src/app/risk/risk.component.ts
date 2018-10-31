@@ -15,8 +15,10 @@ export class RiskComponent implements OnInit {
   dataArr;
   headerArr;
   dataSource;
+  display = 'none';
   tableCharData;
   limit = 1000;
+  show = true;
   file: File;
   risk: Risk[];
   loading  =  true;
@@ -256,5 +258,13 @@ export class RiskComponent implements OnInit {
         return '';
       }
     }
+  }
+
+  openModal() {
+  this.display = 'block';
+  }
+
+  onCloseHandled() {
+    this.display = 'none';
   }
 }
