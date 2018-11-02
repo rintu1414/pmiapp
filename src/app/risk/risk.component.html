@@ -13,7 +13,7 @@
               <div id="grid-1-1">
                 <table class="table">
                   <tr *ngFor="let tabs of ta">
-                    <td *ngFor="let tabsd of tabs" [ngClass]= getCss(tabsd) >
+                    <td *ngFor="let tabsd of tabs" [ngClass]= getCss(tabsd) (click)= openModalWin(tabsd) >
 
                       <div style="float:left; display:inline-block">{{this.getOpenData(tabsd)}}
                         <span *ngFor="let ta of this.getOpenFullData(tabsd)">
@@ -76,9 +76,6 @@
     </div>
 
     <div class="backdrop" [ngStyle]="{'display':display}"></div>
-
-    <button type="button" class="btn btn-info btn-lg" (click)='openModal()'>click to open</button>
-
     <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
      <div class="modal-dialog" role="document">
        <div class="modal-content">
@@ -86,106 +83,64 @@
             <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()">
               <span aria-hidden="true">&times;</span></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" style="width: 100%;overflow: scroll">
             <ng-template #other_content>No Data</ng-template>
-            <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z0" #TABLE
-                   *ngIf="show;else other_content">
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Risk Id</th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-              </ng-container>
-              <ng-container matColumnDef="sourceReference">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Source Reference</th>
-                <td mat-cell *matCellDef="let element"> {{element.sourceReference}} </td>
-              </ng-container>
-              <ng-container matColumnDef="crossReference">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Cross Reference</th>
-                <td mat-cell *matCellDef="let element"> {{element.crossReference}} </td>
-              </ng-container>
-              <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-                <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-              </ng-container>
-              <ng-container matColumnDef="riskCategory">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Risk Category</th>
-                <td mat-cell *matCellDef="let element"> {{element.riskCategory}} </td>
-              </ng-container>
-              <ng-container matColumnDef="riskDescription">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Risk Description</th>
-                <td mat-cell *matCellDef="let element"> {{element.riskDescription}} </td>
-              </ng-container>
-              <ng-container matColumnDef="pic">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> PIC </th>
-                <td mat-cell *matCellDef="let element"> {{element.pic}} </td>
-              </ng-container>
-              <ng-container matColumnDef="impact">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Impact </th>
-                <td mat-cell *matCellDef="let element"> {{element.impact}} </td>
-              </ng-container>
-              <ng-container matColumnDef="likelihood">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Likelihood </th>
-                <td mat-cell *matCellDef="let element"> {{element.likelihood}} </td>
-              </ng-container>
-              <ng-container matColumnDef="severity">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Severity </th>
-                <td mat-cell *matCellDef="let element"> {{element.severity}} </td>
-              </ng-container>
-              <ng-container matColumnDef="response">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Response </th>
-                <td mat-cell *matCellDef="let element"> {{element.response}} </td>
-              </ng-container>
-              <ng-container matColumnDef="responsePlan">
-                <th mat-header-cell *matHeaderCellDef> Response Plan </th>
-                <td mat-cell *matCellDef="let element"> {{element.responsePlan}} </td>
-              </ng-container>
-              <ng-container matColumnDef="targetDate">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Target Date </th>
-                <td mat-cell *matCellDef="let element"> {{element.targetDate}} </td>
-              </ng-container>
-              <ng-container matColumnDef="addToDo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Add To Do </th>
-                <td mat-cell *matCellDef="let element"> {{element.addToDo}} </td>
-              </ng-container>
-              <ng-container matColumnDef="status">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-                <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-              </ng-container>
-              <ng-container matColumnDef="convertToIssue">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Convert To Issue </th>
-                <td mat-cell *matCellDef="let element"> {{element.convertToIssue}} </td>
-              </ng-container>
-              <ng-container matColumnDef="cost">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Cost </th>
-                <td mat-cell *matCellDef="let element"> {{element.cost}} </td>
-              </ng-container>
-              <ng-container matColumnDef="currency">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Currency </th>
-                <td mat-cell *matCellDef="let element"> {{element.currency}} </td>
-              </ng-container>
-              <ng-container matColumnDef="schedule">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Schedule</th>
-                <td mat-cell *matCellDef="let element"> {{element.schedule}} </td>
-              </ng-container>
-              <ng-container matColumnDef="duration">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
-                <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
-              </ng-container>
-              <ng-container matColumnDef="impactDetails">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Impact Details </th>
-                <td mat-cell *matCellDef="let element"> {{element.impactDetails}} </td>
-              </ng-container>
-              <ng-container matColumnDef="rank">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Rank</th>
-                <td mat-cell *matCellDef="let element"> {{element.rank}} </td>
-              </ng-container>
-              <ng-container matColumnDef="derivative">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Derivative </th>
-                <td mat-cell *matCellDef="let element"> {{element.derivative}} </td>
-              </ng-container>
+            <table id="subTable" *ngIf="show;else other_content">
+              <thead>
+                <td>Risk Id</td>
+                <td>Source Reference</td>
+                <td>Cross Reference</td>
+                <td>Date</td>
+                <td>Risk Category</td>
+                <td> Risk Description</td>
+                <td> PIC </td>
+                <td> Impact </td>
+                <td> Likelihood </td>
+                <td> Severity </td>
+                <td> Response </td>
+                <td> Response Plan </td>
+                <td> Target Date </td>
+                <td> Add To Do </td>
+                <td> Status </td>
+                <td> Convert To Issue </td>
+                <td> Cost </td>
+                <td> Currency </td>
+                <td> Schedule</td>
+                <td> Duration </td>
+                <td> Impact Details </td>
+                <td> Rank</td>
+                <td> Derivative </td>
+              </thead>
+<tbody>
+<tr *ngFor="let element of modalDataSource">
+<td> {{element.id}} </td>
+<td> {{element.sourceReference}} </td>
+<td> {{element.crossReference}} </td>
+<td> {{element.date}} </td>
+<td> {{element.riskCategory}} </td>
+<td> {{element.riskDescription}} </td>
+<td> {{element.pic}} </td>
+<td> {{element.impact}} </td>
+<td> {{element.likelihood}} </td>
+<td> {{element.severity}} </td>
+<td> {{element.response}} </td>
+<td> {{element.responsePlan}} </td>
+<td> {{element.targetDate}} </td>
+<td> {{element.addToDo}} </td>
+<td> {{element.status}} </td>
+<td> {{element.convertToIssue}} </td>
+<td> {{element.cost}} </td>
+<td> {{element.currency}} </td>
+<td> {{element.schedule}} </td>
+<td> {{element.duration}} </td>
+<td> {{element.impactDetails}} </td>
+<td> {{element.rank}} </td>
+<td> {{element.derivative}} </td>
+</tr>
 
-              <tr mat-header-row *matHeaderRowDef="headerArr; sticky: true"></tr>
-              <tr mat-row  *matRowDef="let row; columns: headerArr;"></tr>
-            </table>
+</tbody>
+
+          </table>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>

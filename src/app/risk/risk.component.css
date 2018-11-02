@@ -118,9 +118,29 @@ app-scroll-container {
 }
 
 .modal-dialog{
-  height: 30%;
+  height: 75%;
+  width: 90%;
 }
 
 .modal-content {
   height:100%;
 }
+
+#subTable {
+  width: 100%;
+  overflow: scroll
+}
+
+#subTable td {
+  border: 1px solid black;
+}
+
+#subTable tbody tr:nth-child(odd) {
+  background-color: #f0f0f5;
+}
+
+#subTable thead {
+  background-color: #d1d1e0;
+}
+
+

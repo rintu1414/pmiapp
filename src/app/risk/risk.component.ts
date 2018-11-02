@@ -15,10 +15,11 @@ export class RiskComponent implements OnInit {
   dataArr;
   headerArr;
   dataSource;
+  modalDataSource;
   display = 'none';
   tableCharData;
   limit = 1000;
-  show = true;
+  show = false;
   file: File;
   risk: Risk[];
   loading  =  true;
@@ -106,6 +107,7 @@ export class RiskComponent implements OnInit {
       (file: File) => {
         this.headerArr = [];
         this.dataSource = new MatTableDataSource([]);
+        this.modalDataSource = new MatTableDataSource([]);
         this.ngOnInit();
   }
     );
@@ -171,27 +173,32 @@ export class RiskComponent implements OnInit {
       dataOpen = new Array();
     let dataClosed: string[];
     dataClosed = new Array();
+    let totalData;
+    totalData = new Array();
     if (this.dataSource) {
       this.dataSource.data.forEach((task) => {
         dataOpen = [];
         dataClosed = [];
+        totalData = [];
         if (tableChartData.has(task.rank)) {
           open = tableChartData.get(task.rank)['open'];
           closed = tableChartData.get(task.rank)['closed'];
           dataOpen = tableChartData.get(task.rank)['dataOpen'];
           dataClosed = tableChartData.get(task.rank)['dataClosed'];
+          totalData = tableChartData.get(task.rank)['totalData'];
         } else {
           open = 0;
           closed = 0;
         }
+        totalData.push(task);
         if (task.status === 'Open') {
           dataOpen.push(task.id);
           tableChartData.set(task.rank, {'open': open + 1, 'closed' : closed,
-            'dataOpen': dataOpen, 'dataClosed': dataClosed});
+            'dataOpen': dataOpen, 'dataClosed': dataClosed, 'totalData': totalData});
         } else {
           dataClosed.push(task.id);
           tableChartData.set(task.rank, {'open': open, 'closed' : closed + 1,
-            'dataOpen': dataOpen, 'dataClosed': dataClosed});
+            'dataOpen': dataOpen, 'dataClosed': dataClosed, 'totalData': totalData});
         }
       }); }
   return tableChartData;
@@ -267,4 +274,16 @@ export class RiskComponent implements OnInit {
   onCloseHandled() {
     this.display = 'none';
   }
-}
+
+  openModalWin(tdDataIndex) {
+    if (this.tableCharData) {
+      if (this.tableCharData.has(tdDataIndex)) {
+        this.modalDataSource = this.tableCharData.get(tdDataIndex)['totalData'];
+        this.show = true;
+        this.display = 'block';
+      } else {
+        this.modalDataSource = '';
+        this.show = false;
+      }
+  }
+}}
