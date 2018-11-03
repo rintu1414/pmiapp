@@ -13,7 +13,7 @@
               <div id="grid-1-1">
                 <table class="table">
                   <tr *ngFor="let tabs of ta">
-                    <td *ngFor="let tabsd of tabs" [ngClass]= getCss(tabsd) >
+                    <td *ngFor="let tabsd of tabs" [ngClass]= getCss(tabsd) (click)= openModalWin(tabsd) >
 
                       <div style="float:left; display:inline-block">{{this.getOpenData(tabsd)}}
                         <span *ngFor="let ta of this.getOpenFullData(tabsd)">
@@ -75,6 +75,79 @@
 
     </div>
 
+    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()">
+              <span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body" style="width: 100%;overflow: scroll">
+            <ng-template #other_content>No Data</ng-template>
+            <table id="subTable" *ngIf="show;else other_content">
+              <thead>
+                <td>Risk Id</td>
+                <td>Source Reference</td>
+                <td>Cross Reference</td>
+                <td>Date</td>
+                <td>Risk Category</td>
+                <td> Risk Description</td>
+                <td> PIC </td>
+                <td> Impact </td>
+                <td> Likelihood </td>
+                <td> Severity </td>
+                <td> Response </td>
+                <td> Response Plan </td>
+                <td> Target Date </td>
+                <td> Add To Do </td>
+                <td> Status </td>
+                <td> Convert To Issue </td>
+                <td> Cost </td>
+                <td> Currency </td>
+                <td> Schedule</td>
+                <td> Duration </td>
+                <td> Impact Details </td>
+                <td> Rank</td>
+                <td> Derivative </td>
+              </thead>
+<tbody>
+<tr *ngFor="let element of modalDataSource">
+<td> {{element.id}} </td>
+<td> {{element.sourceReference}} </td>
+<td> {{element.crossReference}} </td>
+<td> {{element.date}} </td>
+<td> {{element.riskCategory}} </td>
+<td> {{element.riskDescription}} </td>
+<td> {{element.pic}} </td>
+<td> {{element.impact}} </td>
+<td> {{element.likelihood}} </td>
+<td> {{element.severity}} </td>
+<td> {{element.response}} </td>
+<td> {{element.responsePlan}} </td>
+<td> {{element.targetDate}} </td>
+<td> {{element.addToDo}} </td>
+<td> {{element.status}} </td>
+<td> {{element.convertToIssue}} </td>
+<td> {{element.cost}} </td>
+<td> {{element.currency}} </td>
+<td> {{element.schedule}} </td>
+<td> {{element.duration}} </td>
+<td> {{element.impactDetails}} </td>
+<td> {{element.rank}} </td>
+<td> {{element.derivative}} </td>
+</tr>
+
+</tbody>
+
+          </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </mat-tab>
   <mat-tab label="Risk Create">
     <app-scroll-container [more]="hasMore()"

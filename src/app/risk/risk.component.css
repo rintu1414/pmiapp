@@ -89,12 +89,9 @@ th.mat-header-cell {
   overflow-y: hidden;
   padding: 5px 10px;
   position: relative;
-
   /* make it smooth on iOS */
   -webkit-overflow-scrolling: touch;
 }
-
-
 
 .keen-dashboard .chart-stage .chart-title {
   border: medium none;
@@ -110,3 +107,40 @@ app-scroll-container {
   flex-grow: 0;
   flex-shrink: 0;
 }
+
+.backdrop{
+  background-color:rgba(0,0,0,0.6);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+}
+
+.modal-dialog{
+  height: 75%;
+  width: 90%;
+}
+
+.modal-content {
+  height:100%;
+}
+
+#subTable {
+  width: 100%;
+  overflow: scroll
+}
+
+#subTable td {
+  border: 1px solid black;
+}
+
+#subTable tbody tr:nth-child(odd) {
+  background-color: #f0f0f5;
+}
+
+#subTable thead {
+  background-color: #d1d1e0;
+}
+
+
