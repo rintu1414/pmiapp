@@ -144,3 +144,23 @@ app-scroll-container {
 }
 
 
+.rectangle {
+  background-color: #EEE;
+  height: 15px;
+  width: 240px;
+  border: 1px solid #CCC;
+  background: white;
+  cursor: pointer;
+  background-image: linear-gradient(to right, yellow, gold, goldenrod, #d9534f);
+  float: left;
+
+}
+.arrow {
+
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #C4C4C4;
+  float: left;
+  cursor: pointer;
+
+}
